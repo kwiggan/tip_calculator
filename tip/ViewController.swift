@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Lottie
 class ViewController: UIViewController {
 
     @IBOutlet weak var billAmountTextField: UITextField!
@@ -24,8 +24,29 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         //  Get initial bill amount and calculate tips
         
+        //Listen for events
+     
+        func keyboardDidShow() {
+          print("keyboardDidShow")
+       }
+    
+        //NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification,object: nil)
+        
+        //NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification,object: nil)
+        
+      // NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification,object: nil)
     }
-
+//stop listening for keyboard hide/ show events
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+         
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification,object: nil)
+        
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification,object: nil)
+    }
+    
+    
+    
     @IBAction func onTap(_ sender: Any) {
         let bill = Double(billAmountTextField.text!) ?? 0
         let tipPercentage = [0.15, 0.18, 0.2]
@@ -40,9 +61,25 @@ class ViewController: UIViewController {
     }
     
     @IBAction func calculateTip(_ sender: Any) {
+    
     }
     
     @IBOutlet weak var tipControl: UISegmentedControl!
     
+    func hideKeyboard (){
+        billAmountTextField.resignFirstResponder()
+    }
+    
+    @objc func keyboardWillChange(notification: Notification){
+        print("Keyboard will show: \(notification.name.rawValue)")
+        
+        view.frame.origin.y = -100
+        }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("Return Pressed")
+        hideKeyboard()
+        return true
+    }
 }
 
