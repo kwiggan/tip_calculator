@@ -133,7 +133,7 @@
                                     <segment title="20%"/>
                                 </segments>
                                 <connections>
-                                    <action selector="calculateTip:" destination="BYZ-38-t0r" eventType="valueChanged" id="neP-23-cJ7"/>
+                                    <action selector="tipControllerTwo:" destination="ovx-fo-xO3" eventType="valueChanged" id="f9c-zZ-30X"/>
                                 </connections>
                             </segmentedControl>
                         </subviews>
@@ -141,9 +141,6 @@
                         <viewLayoutGuide key="safeArea" id="sd2-fN-gja"/>
                     </view>
                     <navigationItem key="navigationItem" id="rPd-0P-lhf"/>
-                    <connections>
-                        <outlet property="tipCalculatorTwo" destination="Se0-7a-NBn" id="JO9-bj-rGH"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8W9-AG-08i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

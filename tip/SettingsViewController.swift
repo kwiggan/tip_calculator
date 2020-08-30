@@ -8,8 +8,16 @@
 
 import UIKit
 import Lottie
+
+
 class SettingsViewController: UIViewController {
-    @IBOutlet weak var tipCalculatorTwo: UISegmentedControl!
+    
+    
+    @IBAction func tipControllerTwo(_ sender: Any) {
+        
+        
+    }
+    
     
     let animationView = AnimationView ()
 
@@ -61,5 +69,7 @@ class SettingsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    //calculate tip and total
+    
 
 }
